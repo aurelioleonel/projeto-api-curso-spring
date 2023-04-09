@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService {
 
         authService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
-        
+
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         return new UserDTO(entity);
     }
