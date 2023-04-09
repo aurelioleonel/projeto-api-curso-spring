@@ -3,6 +3,8 @@ package com.devsuperior.dslearnbds.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_offer")
@@ -25,16 +27,20 @@ public class Offer implements Serializable {
     private Course course;
 
 
+    @OneToMany(mappedBy = "offer")
+    private List<Resource> resources = new ArrayList<>();
+
+
     public Offer() {
     }
 
-    public Offer(Long id, String edition, Instant startMoment, Instant endMoment, Course course) {
+    public Offer(Long id, String edition, Instant startMoment, Instant endMoment) {
         super();
         this.id = id;
         this.edition = edition;
         this.startMoment = startMoment;
         this.endMoment = endMoment;
-        this.course = course;
+        //this.course = course;
     }
 
     public Long getId() {
@@ -73,9 +79,9 @@ public class Offer implements Serializable {
         return course;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
+//    public void setCourse(Course course) {
+//        this.course = course;
+//    }
 
 
     @Override
