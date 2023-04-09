@@ -25,30 +25,14 @@ VALUES (3, 2);
 INSERT INTO tb_user_role (user_id, role_id)
 VALUES (3, 3);
 
-
 INSERT INTO tb_course (name, img_Uri, img_Gray_Uri)
-VALUES ('Curso de musica',
-        'https://www.maracanau.ce.gov.br/wp-content/uploads/2022/01/365e450d-df32-4a1e-9a72-7ac30a42f816.jpg',
-        'https://orquestrando.com.br/wp-content/uploads/2022/02/Brass-Musical-Instruments-drawing-scaled.jpg');
-
-INSERT INTO tb_course (name, img_Uri, img_Gray_Uri)
-VALUES ('Curso de spring boot',
-        'https://www.devmedia.com.br/arquivos/cursos/curso_criando-aplicacoes-web-com-spring-boot_2185.png',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJsWXgyVLAfx_2i8rfGr2qDWXYZCJ0G0TamkLOhyjaJDOP1wkuKYyOM5vB2HrFLArnUrI&usqp=CAU');
-
-INSERT INTO tb_course (name, img_Uri, img_Gray_Uri)
-VALUES ('Curso de delphi',
-        'https://3.bp.blogspot.com/-AT5EVvQ4Sgs/VcNBA8yncvI/AAAAAAAAOFU/R43MT8xL1I4/s640/Delphi_XE.png',
-        'https://juliobattisti.com.br/loja/imgscp/CONL000430r.jpg');
-
+VALUES ('Bootcamp HTML', 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/1/1f/Switch-course-book-grey.svg');
 
 INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id)
-VALUES ('1.0', TIMESTAMP WITH TIME ZONE '2023-04-08T20:50:07Z',
-        TIMESTAMP WITH TIME ZONE '2023-07-08T20:50:07Z', 1);
-
+VALUES ('1.0', TIMESTAMP WITH TIME ZONE '2020-11-20T03:00:00Z', TIMESTAMP WITH TIME ZONE '2021-11-20T03:00:00Z', 1);
 INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id)
-VALUES ('2.0', TIMESTAMP WITH TIME ZONE '2023-05-01T20:50:07Z',
-        TIMESTAMP WITH TIME ZONE '2023-08-01T20:50:07Z', 1);
+VALUES ('2.0', TIMESTAMP WITH TIME ZONE '2020-12-20T03:00:00Z', TIMESTAMP WITH TIME ZONE '2021-12-20T03:00:00Z', 1);
 
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id)
 VALUES ('Trilha HTML', 'Trilha principal do curso', 1,
@@ -59,7 +43,6 @@ VALUES ('Forum', 'Tire suas dúvidas', 2,
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id)
 VALUES ('Lives', 'Lives exclusivas para a turma', 3,
         'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg', 0, 1);
-
 
 INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id)
 VALUES ('Capítulo 1', 'Neste capítulo vamos começar', 1,
@@ -75,8 +58,6 @@ INSERT INTO tb_enrollment (user_id, offer_id, enroll_Moment, refund_Moment, avai
 VALUES (1, 1, TIMESTAMP WITH TIME ZONE '2020-11-20T13:00:00Z', null, true, false);
 INSERT INTO tb_enrollment (user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update)
 VALUES (2, 1, TIMESTAMP WITH TIME ZONE '2020-11-20T13:00:00Z', null, true, false);
-
-
 
 INSERT INTO tb_lesson (title, position, section_id)
 VALUES ('Aula 1 do capítulo 1', 1, 1);
@@ -102,3 +83,43 @@ INSERT INTO tb_lessons_done (lesson_id, user_id, offer_id)
 VALUES (1, 1, 1);
 INSERT INTO tb_lessons_done (lesson_id, user_id, offer_id)
 VALUES (2, 1, 1);
+
+INSERT INTO tb_notification (text, moment, read, route, user_id)
+VALUES ('Primeiro feedback de tarefa: favor revisar', TIMESTAMP WITH TIME ZONE '2020-12-10T13:00:00Z', true,
+        '/offers/1/resource/1/sections/1', 1);
+INSERT INTO tb_notification (text, moment, read, route, user_id)
+VALUES ('Segundo feedback: favor revisar', TIMESTAMP WITH TIME ZONE '2020-12-12T13:00:00Z', true,
+        '/offers/1/resource/1/sections/1', 1);
+INSERT INTO tb_notification (text, moment, read, route, user_id)
+VALUES ('Terceiro feedback: favor revisar', TIMESTAMP WITH TIME ZONE '2020-12-14T13:00:00Z', true,
+        '/offers/1/resource/1/sections/1', 1);
+
+INSERT INTO tb_deliver (uri, moment, status, feedback, correct_Count, lesson_id, user_id, offer_id)
+VALUES ('https://github.com/devsuperior/bds-dslearn', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, null, 4,
+        1, 1);
+
+INSERT INTO tb_topic (title, body, moment, author_id, offer_id, lesson_id)
+VALUES ('Título do tópico 1', 'Corpo do tópico 1', TIMESTAMP WITH TIME ZONE '2020-12-12T13:00:00Z', 1, 1, 1);
+INSERT INTO tb_topic (title, body, moment, author_id, offer_id, lesson_id)
+VALUES ('Título do tópico 2', 'Corpo do tópico 2', TIMESTAMP WITH TIME ZONE '2020-12-13T13:00:00Z', 2, 1, 1);
+INSERT INTO tb_topic (title, body, moment, author_id, offer_id, lesson_id)
+VALUES ('Título do tópico 3', 'Corpo do tópico 3', TIMESTAMP WITH TIME ZONE '2020-12-14T13:00:00Z', 2, 1, 1);
+INSERT INTO tb_topic (title, body, moment, author_id, offer_id, lesson_id)
+VALUES ('Título do tópico 4', 'Corpo do tópico 4', TIMESTAMP WITH TIME ZONE '2020-12-15T13:00:00Z', 1, 1, 2);
+INSERT INTO tb_topic (title, body, moment, author_id, offer_id, lesson_id)
+VALUES ('Título do tópico 5', 'Corpo do tópico 5', TIMESTAMP WITH TIME ZONE '2020-12-16T13:00:00Z', 1, 1, 2);
+INSERT INTO tb_topic (title, body, moment, author_id, offer_id, lesson_id)
+VALUES ('Título do tópico 6', 'Corpo do tópico 6', TIMESTAMP WITH TIME ZONE '2020-12-17T13:00:00Z', 2, 1, 3);
+
+INSERT INTO tb_topic_likes (topic_id, user_id)
+VALUES (1, 2);
+INSERT INTO tb_topic_likes (topic_id, user_id)
+VALUES (2, 1);
+
+INSERT INTO tb_reply (body, moment, topic_id, author_id)
+VALUES ('Tente reiniciar o computador', TIMESTAMP WITH TIME ZONE '2020-12-15T13:00:00Z', 1, 2);
+INSERT INTO tb_reply (body, moment, topic_id, author_id)
+VALUES ('Deu certo, valeu!', TIMESTAMP WITH TIME ZONE '2020-12-20T13:00:00Z', 1, 1);
+
+INSERT INTO tb_reply_likes (reply_id, user_id)
+VALUES (1, 1);
